@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TimerViewAttrs">
+        <attr name="enable_text_color" format="reference" />
+        <attr name="disable_text_color" format="reference" />
+
+        <attr name="enable_bg_drawable" format="reference" />
+        <attr name="disable_bg_drawable" format="reference" />
+
+        <attr name="custom_defaultSeconds" format="integer" />
+
+    </declare-styleable>
+</resources>

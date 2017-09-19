@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splash_bg"
+    android:gravity="center">
+
+        <ImageView
+            android:id="@+id/emptyIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/empty"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/emptyIv"
+            android:text=" 本页尚无数据哦！"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:visibility="visible"/>
+
+</RelativeLayout>

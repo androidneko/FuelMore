@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half">#90000000</color>
+    <color name="transparent_30">#50000000</color>
+    <color name="transparent_10">#30000000</color>
+    <color name="transparent_one">#55ff</color>  
+    <color name="white">#ffffff</color>
+    <color name="white_one">#f1f1f1</color>
+    <color name="white_two">#fffefe</color>
+    <color name="white_three">#f2f2f2</color>
+    <color name="white_four">#fefefe</color>
+    <color name="white_five">#dadada</color>
+    <color name="white_six">#e7e7e7</color>
+    <color name="bg_gray">#f5f5f5</color>
+    <color name="gpv_line_gray">#d1d1d1</color>
+    
+    
+    <color name="black">#000000</color>
+    <color name="text_black">#333333</color>
+    <color name="text_black2">#666666</color>
+    <color name="black_one">#515151</color>
+    <color name="black_two">#7f7f7f</color>
+    <color name="black_three">#424242</color>
+    <color name="black_four">#585858</color>
+    <color name="black_five">#686868</color>
+    <color name="black_six">#5b5b5b</color>
+    <color name="black_seven">#e0e0e0</color>
+    <color name="black_eight">#5f5f5f</color>
+    <color name="black_nine">#717171</color>
+    <color name="black_ten">#5d5858</color>
+    <color name="black_eleven">#6d6d6d</color>
+    <color name="black_twelve">#bebebe</color>
+    <color name="black_thirteen">#646464</color>
+    <color name="black_fourteen">#636363</color>
+    <color name="black_fifteen">#d0cfcf</color>
+    <color name="black_sixteen">#5f5f5f</color>
+    <color name="black_seventeen">#919191</color>
+    <color name="black_eightteen">#797979</color>
+    <color name="black_nineteen">#676767</color>
+    <color name="black_twenty">#939393</color>
+    <color name="black_twenty_one">#cbcbcb</color>
+    <color name="black_twenty_two">#414141</color>
+    <color name="black_twenty_three">#666666</color>
+    <color name="black_twenty_four">#535252</color>
+
+
+    <color name="frame_gray">#DBD8D9</color>
+    <color name="gray">#C2C2C2</color>
+    <color name="gray_one">#E5E5E5</color>
+    <color name="brown_one">#6c5c56</color>
+    <color name="brown_two">#6c6c6c</color>
+    <color name="brown_three">#957963</color>
+    <color name="brown_four">#9d8068</color>
+    <color name="brown_five">#9d5b0d</color>
+    <color name="brown_six">#95572e</color>
+    <color name="text_color_checked">#FF0000</color>
+    <color name="text_color_unchecked">#222222</color>
+    <color name="green_one">#57a00f</color>
+
+    <color name="bg_lightorange">#ccff9881</color>
+    <color name="sleep_blue">#06213d</color>
+    <color name="theme_red">#d1000e</color>
+    <color name="red_one">#ff3214</color>
+    <color name="red_two">#9a1d25</color>
+    <color name="red_three">#d85454</color>
+    <color name="orange_one">#ff6d14</color>
+
+
+    <color name="blue_one">#0c3d6b</color>
+    <color name="blue_two">#3f5994</color>
+    <color name="dark_blue">#242736</color>
+    
+    <color name="black_overlay">#66000000</color>
+    
+    <color name="text_default">#FF505050</color>
+    <color name="text_tip">#FFA0A0A0</color>
+    <color name="bg_default">#FFBABABA</color>
+    
+    <color name="blue_list_item_selected">#a1b9d3</color>
+    <!-- 对话框颜色 -->
+    <color name="text_color">#FFFFFF</color>
+    <color name="divider_color">#11000000</color>
+    <color name="msg_color">#FFFFFFFF</color>
+    <color name="dialog_bg">#ffe74c3c</color>
+
+    <color name="btn_press_color">#FFdf4d57</color>
+    <color name="btn_unpress_color">#FFc0392b</color>
+
+    <!-- 详情框颜色-->
+    <color name="detail_bg_color">#FAE5E6</color>
+    <color name="detai_text_color">#F0BDBF</color>
+
+    <color name="round_corner_progress_bar_background_default">#5f5f5f</color>
+    <color name="round_corner_progress_bar_progress_default">#7f7f7f</color>
+    <color name="round_corner_progress_bar_secondary_progress_default">@android:color/transparent</color>
+    <color name="sport_gray">#98C7FE</color>
+    <color name="sport_stroke">#2995F9</color>
+    <color name="sport_bg">#2F9BFE</color>
+</resources>

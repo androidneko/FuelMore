@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="emptyView">
+        <attr name="loadingText" format="string|reference"/>
+        <attr name="failText" format="string|reference"/>
+        <attr name="emptyText" format="string|reference"/>
+    </declare-styleable>
+    
+</resources>

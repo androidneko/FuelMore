@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.androidcat.fuelmore"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.appVersionCode
+        versionName rootProject.ext.appVersion
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("androidcat.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile files('libs/AMap3DMap_5.3.0_Navi_5.3.0_Search_5.3.1_Location_3.5.0_170817.jar')
+    compile files('libs/Msc.jar')
+    compile files('libs/catUtils-1.2.jar')
+    compile project(':utilities')
+    compile project(':acwidgets')
+    compile project(':acnet')
+}
