@@ -4,5 +4,10 @@
 .git/
 .DS_Store
 /build
+/gradle
 /captures
 /local.properties
+*/build/
+/.idea
+*.gradle
+*/*.gradle
