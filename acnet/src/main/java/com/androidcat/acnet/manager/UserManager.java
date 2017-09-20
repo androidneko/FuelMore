@@ -12,14 +12,12 @@ import com.androidcat.acnet.entity.request.LoginRequest;
 import com.androidcat.acnet.entity.request.NewsListRequest;
 import com.androidcat.acnet.entity.request.RegisterRequest;
 import com.androidcat.acnet.entity.request.ResetPasswordRequest;
-import com.androidcat.acnet.entity.request.UserRequest;
 import com.androidcat.acnet.entity.request.ValidateCodeRequest;
 import com.androidcat.acnet.entity.response.BaseResponse;
 import com.androidcat.acnet.entity.response.LoginResponse;
 import com.androidcat.acnet.entity.response.NewsResponse;
 import com.androidcat.acnet.entity.response.RegistResponse;
 import com.androidcat.acnet.entity.response.StringContentResponse;
-import com.androidcat.acnet.entity.response.UserInfoResponse;
 import com.androidcat.acnet.okhttp.callback.EntityResponseHandler;
 import com.androidcat.acnet.okhttp.callback.RawResponseHandler;
 
@@ -130,7 +128,7 @@ public class UserManager extends BaseManager {
 
     public void getVerifyCode(String phoneNum){
         ValidateCodeRequest request = new ValidateCodeRequest();
-        request.mobile = (phoneNum);
+        request.setMobile(phoneNum);
         post(InterfaceCodeConst.TYPE_GET_VERIFY_CODE, getPostJson(request), new EntityResponseHandler<StringContentResponse>() {
             @Override
             public void onStart(int code) {
@@ -208,35 +206,6 @@ public class UserManager extends BaseManager {
                 Message msg = new Message();
                 msg.obj = response;
                 msg.what = OptMsgConst.MSG_RESETPASSWORD_SUCCESS;
-                handler.sendMessage(msg);
-            }
-        });
-    }
-
-    public void getUserInfo(String userId,String companyId,String ciphertext){
-        UserRequest request = new UserRequest();
-        request.userId = (userId);
-        request.companyId = (companyId);
-        request.ciphertext = (ciphertext);
-        post(InterfaceCodeConst.TYPE_GET_USERINFO, getPostJson(request), new EntityResponseHandler<UserInfoResponse>() {
-            @Override
-            public void onStart(int code) {
-                handler.sendEmptyMessage(OptMsgConst.MSG_GET_USERINFO_START);
-            }
-
-            @Override
-            public void onFailure(int statusCode, String error_msg) {
-                Message msg = new Message();
-                msg.obj = error_msg;
-                msg.what = OptMsgConst.MSG_GET_USERINFO_FAIL;
-                handler.sendMessage(msg);
-            }
-
-            @Override
-            public void onSuccess(int statusCode, UserInfoResponse response) {
-                Message msg = new Message();
-                msg.obj = response;
-                msg.what = OptMsgConst.MSG_GET_USERINFO_SUCCESS;
                 handler.sendMessage(msg);
             }
         });

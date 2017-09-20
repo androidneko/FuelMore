@@ -23,11 +23,6 @@ public class User implements Parcelable{
     public String ciphertext;
     public String cipherqrcode;
     public String pointId;
-    public String userRealName;
-    public String integral;
-    public String balance;
-    public String consumptionAmount;
-    public String consumptionCount;
 
     public User() {
     }
@@ -50,11 +45,6 @@ public class User implements Parcelable{
         dest.writeString(this.ciphertext);
         dest.writeString(this.cipherqrcode);
         dest.writeString(this.pointId);
-        dest.writeString(this.userRealName);
-        dest.writeString(this.integral);
-        dest.writeString(this.balance);
-        dest.writeString(this.consumptionAmount);
-        dest.writeString(this.consumptionCount);
     }
 
     protected User(Parcel in) {
@@ -69,11 +59,6 @@ public class User implements Parcelable{
         this.ciphertext = in.readString();
         this.cipherqrcode = in.readString();
         this.pointId = in.readString();
-        this.userRealName = in.readString();
-        this.integral = in.readString();
-        this.balance = in.readString();
-        this.consumptionAmount = in.readString();
-        this.consumptionCount = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {

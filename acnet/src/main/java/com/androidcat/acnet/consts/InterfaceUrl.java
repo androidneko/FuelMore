@@ -6,7 +6,7 @@ package com.androidcat.acnet.consts;
 
 public class InterfaceUrl {
     public static final String BASE_URL = "http://120.25.249.105:8081";
-    public static final String URL_CONTROLLER = "/api/v1/";
+
     public static final String REGISTER_URL = BASE_URL + "/api/v1/create";
     public static final String LOGIN_URL = BASE_URL + "/api/v1/userLogin";
     public static final String GET_VCODE_URL = BASE_URL + "/api/v1/requestSMS";

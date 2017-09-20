@@ -20,6 +20,7 @@ public class LoginContent implements Parcelable{
     public String companyName;
     public String cipherqrcode;
     public String ciphertext;
+    public String pointId;
 
     public String getToken() {
         return token;
@@ -29,13 +30,6 @@ public class LoginContent implements Parcelable{
         this.token = token;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getCreateTime() {
         return createTime;
@@ -101,8 +95,10 @@ public class LoginContent implements Parcelable{
         dest.writeString(this.createTime);
         dest.writeString(this.authority);
         dest.writeString(this.companyId);
+        dest.writeString(this.companyName);
         dest.writeString(this.cipherqrcode);
         dest.writeString(this.ciphertext);
+        dest.writeString(this.pointId);
     }
 
     protected LoginContent(Parcel in) {
@@ -112,8 +108,10 @@ public class LoginContent implements Parcelable{
         this.createTime = in.readString();
         this.authority = in.readString();
         this.companyId = in.readString();
+        this.companyName = in.readString();
         this.cipherqrcode = in.readString();
         this.ciphertext = in.readString();
+        this.pointId = in.readString();
     }
 
     public static final Creator<LoginContent> CREATOR = new Creator<LoginContent>() {

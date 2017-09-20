@@ -40,11 +40,6 @@
         android:background="@color/white"
         android:layout_marginTop="10dp">
 
-        <com.anroidcat.acwidgets.EmptyView
-            android:id="@+id/emptyView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
         <com.anroidcat.acwidgets.listview.XListView
             android:id="@+id/order_list"
             android:layout_width="match_parent"
@@ -55,6 +50,21 @@
             android:dividerHeight="10dp"
             android:fadingEdge="none"
             android:scrollbars="none" />
+
+        <ViewStub
+            android:id="@+id/empty"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout="@layout/empty" />
+
+        <!--<ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@drawable/loadingbar"
+            android:visibility="gone" />-->
     </RelativeLayout>
 
 </LinearLayout>

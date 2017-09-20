@@ -13,12 +13,7 @@ import com.androidcat.acnet.okhttp.callback.GsonResponseHandler;
 public class RequestManager {
 
     public static void post(Object tag,int code,String json,GsonResponseHandler gsonResponseHandler){
-        MyOkHttp.getInstance()
-                .post()
-                .tag(tag)
-                .jsonParams(json)
-                .url(getUrl(code))
-                .enqueue(gsonResponseHandler);
+        MyOkHttp.getInstance().post().tag(tag).jsonParams(json).url(getUrl(code)).enqueue(gsonResponseHandler);
     }
 
     private static String getUrl(int code){

@@ -30,22 +30,21 @@ public class OrderPayManager extends BaseManager {
 
     public void requestQrcode(String userName,String userId,String companyId,String authority,String ciphertext,RawResponseHandler rawResponseHandler){
         QrcodeRequest request = new QrcodeRequest();
-        request.userName = (userName);
-        request.userId = (userId);
-        request.authority = (authority);
-        request.companyId = (companyId);
-        request.ciphertext = (ciphertext);
+        request.setUsername(userName);
+        request.setUserId(userId);
+        request.setAuthority(authority);
+        request.setCompanyId(companyId);
+        request.setCiphertext(ciphertext);
         post(InterfaceCodeConst.TYPE_GET_QR_CODE, getPostJson(request), rawResponseHandler);
     }
 
-    public void requestQrcode(String userName,String userId,String companyId,String companyName,String authority,String ciphertext){
+    public void requestQrcode(String userName,String userId,String companyId,String authority,String ciphertext){
         QrcodeRequest request = new QrcodeRequest();
-        request.userName = (userName);
-        request.userId = (userId);
-        request.authority = (authority);
-        request.companyId = (companyId);
-        request.companyName = companyName;
-        request.ciphertext = (ciphertext);
+        request.setUsername(userName);
+        request.setUserId(userId);
+        request.setAuthority(authority);
+        request.setCompanyId(companyId);
+        request.setCiphertext(ciphertext);
         post(InterfaceCodeConst.TYPE_GET_QR_CODE, getPostJson(request), new EntityResponseHandler<StringContentResponse>() {
             @Override
             public void onStart(int code) {
@@ -70,14 +69,13 @@ public class OrderPayManager extends BaseManager {
         });
     }
 
-    public void addRecharge(String userName,String userId,String ciphertext,String companyId,String amount,String companyName){
+    public void addRecharge(String userName,String userId,String companyId,String amount,String companyName){
         AddRechargeRequest request = new AddRechargeRequest();
-        request.userName = (userName);
-        request.userId = (userId);
-        request.ciphertext = ciphertext;
-        request.amount = (amount);
-        request.companyId = (companyId);
-        request.company_name = (companyName);
+        request.setUsername(userName);
+        request.setUserId(userId);
+        request.setAmount(amount);
+        request.setCompanyId(companyId);
+        request.setCompany_name(companyName);
         post(InterfaceCodeConst.TYPE_ADD_RECHARGE, getPostJson(request), new EntityResponseHandler<StringContentResponse>() {
             @Override
             public void onStart(int code) {

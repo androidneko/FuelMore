@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.androidcat.fuelmore">
+    package="com.androidcat.fuelmore.merchant">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.autofocus" />
 
     <application
         android:name=".FuelMoreApplication"
@@ -45,44 +47,19 @@
         <activity android:name=".ui.activity.ForgetPwdActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.activity.ChangePswActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.activity.GasStationListActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.activity.GasStationMapActivity"
-            android:screenOrientation="portrait"
-            />
         <activity android:name=".ui.activity.OrderListActivity"
             android:screenOrientation="portrait"
             />
         <activity android:name=".ui.activity.UserInfoActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.activity.MyWebBrowserActivity"
+        <activity android:name=".ui.activity.GatheringActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".ui.activity.RechargeActivity"
+        <activity android:name="com.androidcat.utilities.qrcode.ui.CaptureActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name="com.androidcat.utilities.permission.PermissionActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.activity.BaseNaviActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".ui.activity.AMapNaviActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="com.amap.api.navi.AmapRouteActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
 
-        <service android:name="com.amap.api.location.APSService" />
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="d1ba4cd65c35d6d97f99b7c0e1101d7f" />
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import com.androidcat.acnet.entity.LoginContent;
  */
 public class LoginResponse extends BaseResponse{
 
-    private LoginContent content;
+    public LoginContent content;
 
     public LoginContent getContent() {
         return content;

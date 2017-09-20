@@ -22,15 +22,12 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '25.0.0'
 }
 
 dependencies {
     compile 'com.qiniu:happy-dns:0.2.7'
-    provided 'com.android.support:support-annotations:24.2.0'
-    provided files('libs/android-support-v7-appcompat.jar')
-    provided files('libs/android-support-v4.jar')
     provided files('libs/gson-2.2.2.jar')
     provided files('libs/okhttp-3.7.0.jar')
     provided files('libs/okio-1.12.0.jar')
+    compile files('libs/ZBarDecoder.jar')
 }
