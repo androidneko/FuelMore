@@ -97,5 +97,10 @@ public class OptMsgConst {
     public static final int MSG_GET_ORDER_LIST_FAIL = 0x1036;
     public static final int MSG_GET_ORDER_LIST_START = 0x1037;
 
+    //车牌号
+    public static final int MSG_GET_TRUCK_LICENSE_SUCCESS = 0x1038;
+    public static final int MSG_GET_TRUCK_LICENSE_FAIL = 0x1039;
+    public static final int MSG_GET_TRUCK_LICENSE_START = 0x1040;
+
 }
 

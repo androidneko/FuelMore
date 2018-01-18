@@ -89,6 +89,7 @@ public class FastLoginActivity extends BaseActivity {
                 break;
             case OptMsgConst.FAST_LOGIN_SUCCESS:
                 showToast("登录成功");
+                dismissLoadingDialog();
                 saveUser((LoginResponse) msg.obj);
                 EventBus.getDefault().post(new FuelMoreEvent(FuelMoreEvent.CODE_FINISH_LOGIN));
                 Intent intent = new Intent(FastLoginActivity.this, HomeActivity.class);
@@ -149,7 +150,7 @@ public class FastLoginActivity extends BaseActivity {
         user.mobile = loginResponse.getContent().userName;
         user.token = loginResponse.getContent().getUserId();
         user.companyId = loginResponse.getContent().getCompanyId();
-        user.companyId = loginResponse.getContent().companyName;
+        user.company = loginResponse.getContent().companyName;
         user.ciphertext = loginResponse.getContent().getCiphertext();
         user.cipherqrcode = loginResponse.getContent().getCipherqrcode();
         user.pointId = loginResponse.content.pointId;

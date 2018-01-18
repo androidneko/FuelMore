@@ -56,6 +56,9 @@
         <activity android:name=".ui.activity.GatheringActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".ui.activity.GatherResultActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name="com.androidcat.utilities.qrcode.ui.CaptureActivity"
             android:screenOrientation="portrait"
             />

@@ -10,8 +10,10 @@ import com.androidcat.acnet.entity.request.AddRechargeRequest;
 import com.androidcat.acnet.entity.request.GatherRequest;
 import com.androidcat.acnet.entity.request.OrderListRequest;
 import com.androidcat.acnet.entity.request.QrcodeRequest;
+import com.androidcat.acnet.entity.request.TruckLicenseRequest;
 import com.androidcat.acnet.entity.response.OrderListResponse;
 import com.androidcat.acnet.entity.response.StringContentResponse;
+import com.androidcat.acnet.entity.response.TruckLicenseResponse;
 import com.androidcat.acnet.okhttp.callback.EntityResponseHandler;
 import com.androidcat.acnet.okhttp.callback.RawResponseHandler;
 
@@ -166,6 +168,37 @@ public class OrderPayManager extends BaseManager {
                 Message msg = new Message();
                 msg.obj = response;
                 msg.what = OptMsgConst.MSG_GATHER_SUCCESS;
+                handler.sendMessage(msg);
+            }
+        });
+    }
+
+    public void getTruckLicense(String ciphertext,final boolean isPull){
+        TruckLicenseRequest request = new TruckLicenseRequest();
+        request.qrcode = ciphertext;
+
+        post(InterfaceCodeConst.TYPE_GET_TRUCK_LICENSE, getPostJson(request), new EntityResponseHandler<TruckLicenseResponse>() {
+            @Override
+            public void onStart(int code) {
+                Message msg = new Message();
+                msg.obj = isPull;
+                msg.what = OptMsgConst.MSG_GET_TRUCK_LICENSE_START;
+                handler.sendMessage(msg);
+            }
+
+            @Override
+            public void onFailure(int statusCode, String error_msg) {
+                Message msg = new Message();
+                msg.obj = error_msg;
+                msg.what = OptMsgConst.MSG_GET_TRUCK_LICENSE_FAIL;
+                handler.sendMessage(msg);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, TruckLicenseResponse response) {
+                Message msg = new Message();
+                msg.obj = response;
+                msg.what = OptMsgConst.MSG_GET_TRUCK_LICENSE_SUCCESS;
                 handler.sendMessage(msg);
             }
         });

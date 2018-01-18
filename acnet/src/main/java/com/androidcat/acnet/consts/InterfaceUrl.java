@@ -20,6 +20,7 @@ public class InterfaceUrl {
 
     public static final String USERINFO_URL = BASE_URL + "/api/v1/user/findByUserId";
     public static final String GATHER_URL = BASE_URL + "/api/v1/saveOrderInfo";
+    public static final String TRUCK_LICENSE_URL = BASE_URL + "/api/v1/getCardQrcode";
 
 
     public static String getUrl(int code){
@@ -48,6 +49,8 @@ public class InterfaceUrl {
                 return GATHER_URL;
             case InterfaceCodeConst.TYPE_GET_USERINFO:
                 return USERINFO_URL;
+            case InterfaceCodeConst.TYPE_GET_TRUCK_LICENSE:
+                return TRUCK_LICENSE_URL;
         }
         return "";
     }

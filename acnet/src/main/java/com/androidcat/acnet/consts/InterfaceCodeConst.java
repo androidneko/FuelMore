@@ -35,4 +35,6 @@ public class InterfaceCodeConst {
     public final static int TYPE_GET_NEWS_LIST = 1013;
 
     public final static int TYPE_GATHER = 1014;
+
+    public final static int TYPE_GET_TRUCK_LICENSE = 1015;
 }

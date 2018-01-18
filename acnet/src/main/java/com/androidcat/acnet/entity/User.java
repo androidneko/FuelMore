@@ -18,7 +18,7 @@ public class User implements Parcelable{
     public String token;
     public String name;
     public String authority;
-    public String company = "test";
+    public String company = "未知";
     public String companyId;
     public String ciphertext;
     public String cipherqrcode;

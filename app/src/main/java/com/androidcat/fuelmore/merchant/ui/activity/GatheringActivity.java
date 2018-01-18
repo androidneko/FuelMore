@@ -28,6 +28,7 @@ public class GatheringActivity extends BaseActivity {
     private Button yesBtn;
 
     private String amount;
+    private String qrCode;
     private OrderPayManager orderPayManager;
 
     @Override
@@ -39,10 +40,12 @@ public class GatheringActivity extends BaseActivity {
                 break;
             case OptMsgConst.MSG_GATHER_SUCCESS:
                 dismissLoadingDialog();
-                showGatheringSuccessDialog();
+                //showGatheringSuccessDialog();
+                gotoGatherResult(true);
                 break;
             case OptMsgConst.MSG_GATHER_FAIL:
                 dismissLoadingDialog();
+                gotoGatherResult(false);
                 showToast((String) msg.obj);
                 break;
         }
@@ -125,6 +128,14 @@ public class GatheringActivity extends BaseActivity {
                 });
     }
 
+    private void gotoGatherResult(boolean isSucceed){
+        Intent intent = new Intent(this,GatherResultActivity.class);
+        intent.putExtra("qrcode",qrCode);
+        intent.putExtra("success",isSucceed);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,7 +143,7 @@ public class GatheringActivity extends BaseActivity {
             if (resultCode == RESULT_OK){
                 Bundle bundle = data.getExtras();
                 if (bundle != null){
-                    String qrCode = bundle.getString("qrCodeString");
+                    qrCode = bundle.getString("qrCodeString");
                     orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode);
                 }
             }
