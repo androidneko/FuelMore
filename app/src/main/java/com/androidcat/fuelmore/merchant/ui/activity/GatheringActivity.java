@@ -5,7 +5,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,21 +17,32 @@ import com.androidcat.acnet.manager.OrderPayManager;
 import com.androidcat.fuelmore.merchant.R;
 import com.androidcat.utilities.Utils;
 import com.androidcat.utilities.listener.OnSingleClickListener;
+import com.androidcat.utilities.persistence.SPConsts;
+import com.androidcat.utilities.persistence.SharePreferencesUtil;
 import com.androidcat.utilities.qrcode.ui.CaptureActivity;
+import com.bigkoo.pickerview.OptionsPopupWindow;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.NormalDialog;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GatheringActivity extends BaseActivity {
     private final static String TAG = "GatheringActivity";
 
     private View back;
+    private View payTypeView;
     private TextView mobileTv;
+    private TextView payTypeTv;
     private EditText amountEt;
     private Button yesBtn;
 
     private String amount;
     private String qrCode;
     private OrderPayManager orderPayManager;
+    private String[] payTypes = {"余额支付", "线下支付"};
+    private OptionsPopupWindow pwOptions;
+    private ArrayList<String> options1Items = new ArrayList<String>();
 
     @Override
     protected void handleEventMsg(Message msg) {
@@ -61,6 +74,20 @@ public class GatheringActivity extends BaseActivity {
                 case R.id.yesBtn:
                     gather();
                     break;
+                case R.id.payTypeView:
+                    backgroundAlpha(1.0f);
+                    pwOptions.showAtLocation(yesBtn, Gravity.BOTTOM, 0, 0);
+                    String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE,"余额支付");
+                    if (!Utils.isNull(payType)) {
+                        if ("余额支付".equals(payType)) {
+                            pwOptions.setSelectOptions(0);
+                        }else if("线下支付".equals(payType)){
+                            pwOptions.setSelectOptions(1);
+                        }else {
+                            pwOptions.setSelectOptions(0);
+                        }
+                    }
+                    break;
             }
         }
     };
@@ -81,7 +108,9 @@ public class GatheringActivity extends BaseActivity {
         resource.updateConfiguration(c, resource.getDisplayMetrics());
 
         back = findViewById(R.id.layout_back);
+        payTypeView = findViewById(R.id.payTypeView);
         mobileTv = (TextView) findViewById(R.id.mobileTv);
+        payTypeTv = (TextView) findViewById(R.id.payTypeTv);
         amountEt = (EditText) findViewById(R.id.editText);
         yesBtn = (Button) findViewById(R.id.yesBtn);
 
@@ -90,11 +119,35 @@ public class GatheringActivity extends BaseActivity {
     private void setListener(){
         back.setOnClickListener(onSingleClickListener);
         yesBtn.setOnClickListener(onSingleClickListener);
+        payTypeView.setOnClickListener(onSingleClickListener);
     }
 
     private void initData(){
         orderPayManager = new OrderPayManager(this,baseHandler);
         mobileTv.setText(user.mobile);
+        String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE,"余额支付");
+        payTypeTv.setText(payType);
+        //选项选择器
+        options1Items.clear();
+        pwOptions = new OptionsPopupWindow(this);
+        //选项1
+        options1Items.add(payTypes[0]);
+        options1Items.add(payTypes[1]);
+        pwOptions.setPicker(options1Items);
+        //设置默认选中的项目
+        int selection = Arrays.binarySearch(payTypes,payType);
+        pwOptions.setSelectOptions(selection>0?selection:0);
+
+        //监听确定选择按钮
+        pwOptions.setOnoptionsSelectListener(new OptionsPopupWindow.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3) {
+                //返回的分别是三个级别的选中位置
+                String payType = options1Items.get(options1);
+                payTypeTv.setText(payType);
+                SharePreferencesUtil.setValue(SPConsts.PAY_TYPE,payType);
+            }
+        });
     }
 
     private void gather(){
@@ -148,5 +201,11 @@ public class GatheringActivity extends BaseActivity {
                 }
             }
         }
+    }
+
+    private void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = bgAlpha; //0.0-1.0
+        getWindow().setAttributes(lp);
     }
 }
