@@ -29,7 +29,8 @@ import java.util.Arrays;
 
 public class GatheringActivity extends BaseActivity {
     private final static String TAG = "GatheringActivity";
-
+    public static final String PAY_TYPE_BALANCE = "余额支付";
+    public static final String PAY_TYPE_OFFLINE = "线下支付";
     private View back;
     private View payTypeView;
     private TextView mobileTv;
@@ -160,7 +161,19 @@ public class GatheringActivity extends BaseActivity {
             showToast("请输入正确的金额");
             return;
         }
-        startActivityForResult(new Intent(this, CaptureActivity.class),13);
+        String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE);
+        if (Utils.isNull(payType)){
+            showToast("请选择支付方式");
+            return;
+        }
+        if (PAY_TYPE_BALANCE.equals(payType)){
+            startActivityForResult(new Intent(this, CaptureActivity.class),13);
+        }
+        else if(PAY_TYPE_OFFLINE.equals(payType)){
+
+        }else {
+            showToast("未知的支付方式");
+        }
     }
 
     private void showGatheringSuccessDialog(){

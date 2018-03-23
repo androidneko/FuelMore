@@ -13,6 +13,7 @@ public class SPConsts {
     public static final String XLISTVIEW_LAST_UPDATE_TIME = "xlistview_last_update_time";
 
     public static final String PAY_TYPE = "payType";
+    public static final String USERNAME = "userName";
 
 
     /**蓝牙数据读取 */
