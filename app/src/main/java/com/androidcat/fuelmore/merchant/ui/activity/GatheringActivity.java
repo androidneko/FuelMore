@@ -166,14 +166,7 @@ public class GatheringActivity extends BaseActivity {
             showToast("请选择支付方式");
             return;
         }
-        if (PAY_TYPE_BALANCE.equals(payType)){
-            startActivityForResult(new Intent(this, CaptureActivity.class),13);
-        }
-        else if(PAY_TYPE_OFFLINE.equals(payType)){
-
-        }else {
-            showToast("未知的支付方式");
-        }
+        startActivityForResult(new Intent(this, CaptureActivity.class),13);
     }
 
     private void showGatheringSuccessDialog(){
@@ -210,7 +203,16 @@ public class GatheringActivity extends BaseActivity {
                 Bundle bundle = data.getExtras();
                 if (bundle != null){
                     qrCode = bundle.getString("qrCodeString");
-                    orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode);
+                    String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE);
+                    if (PAY_TYPE_BALANCE.equals(payType)){
+                        orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode);
+                    }
+                    else if(PAY_TYPE_OFFLINE.equals(payType)){
+                        // TODO: 2018/3/27
+                        orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode);
+                    }else {
+                        showToast("未知的支付方式");
+                    }
                 }
             }
         }
