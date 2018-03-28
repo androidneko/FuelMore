@@ -136,7 +136,7 @@ public class OrderPayManager extends BaseManager {
         });
     }
 
-    public void gather(String userName,String userId,String authority,String ciphertext,String companyId,String companyName,String pointId,String amount, String qrcode){
+    public void gather(String userName,String userId,String authority,String ciphertext,String companyId,String companyName,String pointId,String amount, String qrcode,String payment){
         GatherRequest request = new GatherRequest();
         request.businessUserName = (userName);
         request.businessUserId = (userId);
@@ -147,6 +147,7 @@ public class OrderPayManager extends BaseManager {
         request.pointId = pointId;
         request.amountMoney = amount;
         request.cipherqrcode = qrcode;
+        request.payment = payment;
         post(InterfaceCodeConst.TYPE_GATHER, getPostJson(request), new EntityResponseHandler<StringContentResponse>() {
             @Override
             public void onStart(int code) {

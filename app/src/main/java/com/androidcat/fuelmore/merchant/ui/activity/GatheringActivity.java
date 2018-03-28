@@ -204,15 +204,17 @@ public class GatheringActivity extends BaseActivity {
                 if (bundle != null){
                     qrCode = bundle.getString("qrCodeString");
                     String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE);
+                    String payment = "0";
                     if (PAY_TYPE_BALANCE.equals(payType)){
-                        orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode);
+                        payment = "0";
                     }
                     else if(PAY_TYPE_OFFLINE.equals(payType)){
                         // TODO: 2018/3/27
-                        orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode);
+                        payment = "1";
                     }else {
                         showToast("未知的支付方式");
                     }
+                    orderPayManager.gather(user.userName,user.id,user.authority,user.ciphertext,user.companyId,user.company,user.pointId,amount,qrCode,payment);
                 }
             }
         }

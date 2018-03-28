@@ -18,4 +18,5 @@ public class GatherRequest extends BaseRequest {
     public String companyId;
     public String companyName;
     public String pointId;
+    public String payment;//支付方式0为在线1为现金
 }
