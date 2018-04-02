@@ -197,7 +197,7 @@
             android:layout_marginLeft="10dp"
             android:background="@color/transparent"
             android:hint="请输入充值金额"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textColor="@color/text_black"
             android:textColorHint="@color/gray"
             android:textSize="15sp" />
