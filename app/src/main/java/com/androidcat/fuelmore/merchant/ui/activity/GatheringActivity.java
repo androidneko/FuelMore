@@ -157,10 +157,6 @@ public class GatheringActivity extends BaseActivity {
             showToast("请输入正确的金额");
             return;
         }
-        if (!Utils.isNumeric(amount)){
-            showToast("请输入正确的金额");
-            return;
-        }
         String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE);
         if (Utils.isNull(payType)){
             showToast("请选择支付方式");
