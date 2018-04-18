@@ -23,6 +23,7 @@ import com.androidcat.fuelmore.merchant.R;
 import com.androidcat.fuelmore.merchant.entity.FuelMoreEvent;
 import com.androidcat.utilities.Utils;
 import com.androidcat.utilities.listener.OnSingleClickListener;
+import com.androidcat.utilities.persistence.SPConsts;
 import com.androidcat.utilities.persistence.SharePreferencesUtil;
 import com.androidcat.utilities.view.TimerView;
 import com.anroidcat.acwidgets.ClearEditText;
@@ -37,9 +38,12 @@ public class GatherResultActivity extends BaseActivity {
     private ImageView retIv;
     private TextView retTv;
     private TextView licenseTv;
+    private TextView amtTv;
+    private TextView payTypeTv;
     private Button okBtn;
 
     private String qrcode;
+    private String amount;
     private OrderPayManager orderPayManager;
 
     private OnSingleClickListener onClickListener = new OnSingleClickListener() {
@@ -85,6 +89,8 @@ public class GatherResultActivity extends BaseActivity {
         retIv = (ImageView) findViewById(R.id.retIv);
         retTv = (TextView) findViewById(R.id.retTv);
         licenseTv = (TextView) findViewById(R.id.licenseTv);
+        amtTv = (TextView) findViewById(R.id.amtTv);
+        payTypeTv = (TextView) findViewById(R.id.payTypeTv);
         okBtn = (Button) findViewById(R.id.okBtn);
         back = findViewById(R.id.layout_back);
     }
@@ -98,13 +104,19 @@ public class GatherResultActivity extends BaseActivity {
     @SuppressLint("NewApi")
     private void initData(){
         qrcode = getIntent().getStringExtra("qrcode");
+        amount = getIntent().getStringExtra("amount");
+        String payType = SharePreferencesUtil.getValue(SPConsts.PAY_TYPE);
         if (getIntent().getBooleanExtra("success",false)){
             retIv.setBackground(getResources().getDrawable(R.mipmap.refund_success_img));
             retTv.setText("扣款成功!");
+            amtTv.setText("支付金额:"+amount+"元");
+            payTypeTv.setText("支付方式:"+payType);
             orderPayManager.getTruckLicense(qrcode,true);
         }else {
             retIv.setBackground(getResources().getDrawable(R.mipmap.refund_fail_img));
             retTv.setText("扣款失败!");
+            amtTv.setText("支付金额:"+amount+"元");
+            payTypeTv.setText("支付方式:"+payType);
         }
     }
 }

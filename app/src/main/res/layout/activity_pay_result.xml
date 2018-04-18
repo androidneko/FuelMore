@@ -36,7 +36,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="230dp"
         android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -56,6 +56,26 @@
             android:textColor="@color/text_black"
             android:textSize="26sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/amtTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="支付金额:0.00元"
+            android:textColor="@color/text_black"
+            android:textSize="16sp"
+             />
+
+        <TextView
+            android:id="@+id/payTypeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="支付方式:线下支付"
+            android:textColor="@color/text_black"
+            android:textSize="16sp"
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +85,7 @@
         android:layout_margin="15dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"

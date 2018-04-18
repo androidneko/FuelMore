@@ -186,6 +186,7 @@ public class GatheringActivity extends BaseActivity {
     private void gotoGatherResult(boolean isSucceed){
         Intent intent = new Intent(this,GatherResultActivity.class);
         intent.putExtra("qrcode",qrCode);
+        intent.putExtra("amount",amount);
         intent.putExtra("success",isSucceed);
         startActivity(intent);
         finish();
